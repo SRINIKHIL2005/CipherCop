@@ -1,0 +1,5 @@
+# Backend requirements
+Flask
+Flask-CORS
+requests
+python-dotenv
