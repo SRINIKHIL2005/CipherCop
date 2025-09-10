@@ -1,0 +1,34 @@
+Loaded model source: xgb_json
+
+First 20 phishing URL probabilities (index,prob_pos,url sample):
+01. 0.000025  Domain
+02. 0.000025  eevee.tv
+03. 0.000025  appleid.apple.com-sa.pm
+04. 0.000025  grandcup.xyz
+05. 0.000025  villa-azzurro.com
+06. 0.000025  mygpstrip.net
+07. 0.000025  35.199.84.117
+08. 0.000025  milpitaslions.com
+09. 0.000025  pastimenangqq101.com
+10. 0.000025  firebasestorage.googleapis.com
+11. 0.000025  cheaproomsvalencia.com
+12. 0.000025  aprenderparaser.com.br
+13. 0.000025  kinemind.com
+14. 0.000025  han.gl
+15. 0.000025  u.to
+16. 0.000025  faktor.rs
+17. 0.000025  centromusicalpaternense.es
+18. 0.000025  verificare.sella.corporateportal.aggiorniituoidati.com
+19. 0.000025  appleid.apple.com-sa.pm
+20. 0.000025  biced.iainbukittinggi.ac.id
+
+Probability stats for these 20 rows:
+min: 2.50793182203779e-05
+max: 2.50793182203779e-05
+mean: 2.50793182203779e-05
+
+Threshold sweep counts:
+  > 0.50: 0/20
+  > 0.30: 0/20
+  > 0.10: 0/20
+  > 0.05: 0/20

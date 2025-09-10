@@ -1,0 +1,56 @@
+Extracting features for 10002 rows...
+Loaded model: xgb_json
+
+Probability stats: min 2.50793182203779e-05 max 2.50793182203779e-05 mean 2.50793182203779e-05
+
+Threshold sweep:
+  > 0.5000: positives=0, TP=0, FP=0, TN=5001, FN=5001, acc=0.5000, prec=0.0000, rec=0.0000
+  > 0.3000: positives=0, TP=0, FP=0, TN=5001, FN=5001, acc=0.5000, prec=0.0000, rec=0.0000
+  > 0.1000: positives=0, TP=0, FP=0, TN=5001, FN=5001, acc=0.5000, prec=0.0000, rec=0.0000
+  > 0.0500: positives=0, TP=0, FP=0, TN=5001, FN=5001, acc=0.5000, prec=0.0000, rec=0.0000
+  > 0.0100: positives=0, TP=0, FP=0, TN=5001, FN=5001, acc=0.5000, prec=0.0000, rec=0.0000
+  > 0.0010: positives=0, TP=0, FP=0, TN=5001, FN=5001, acc=0.5000, prec=0.0000, rec=0.0000
+
+Top 20 by predicted probability:
+0.00002508	1	Domain
+0.00002508	1	eevee.tv
+0.00002508	1	appleid.apple.com-sa.pm
+0.00002508	1	grandcup.xyz
+0.00002508	1	villa-azzurro.com
+0.00002508	1	mygpstrip.net
+0.00002508	1	35.199.84.117
+0.00002508	1	milpitaslions.com
+0.00002508	1	pastimenangqq101.com
+0.00002508	1	firebasestorage.googleapis.com
+0.00002508	1	cheaproomsvalencia.com
+0.00002508	1	aprenderparaser.com.br
+0.00002508	1	kinemind.com
+0.00002508	1	han.gl
+0.00002508	1	u.to
+0.00002508	1	faktor.rs
+0.00002508	1	centromusicalpaternense.es
+0.00002508	1	verificare.sella.corporateportal.aggiorniituoidati.com
+0.00002508	1	appleid.apple.com-sa.pm
+0.00002508	1	biced.iainbukittinggi.ac.id
+
+Bottom 20 by predicted probability:
+0.00002508	1	Domain
+0.00002508	1	eevee.tv
+0.00002508	1	appleid.apple.com-sa.pm
+0.00002508	1	grandcup.xyz
+0.00002508	1	villa-azzurro.com
+0.00002508	1	mygpstrip.net
+0.00002508	1	35.199.84.117
+0.00002508	1	milpitaslions.com
+0.00002508	1	pastimenangqq101.com
+0.00002508	1	firebasestorage.googleapis.com
+0.00002508	1	cheaproomsvalencia.com
+0.00002508	1	aprenderparaser.com.br
+0.00002508	1	kinemind.com
+0.00002508	1	han.gl
+0.00002508	1	u.to
+0.00002508	1	faktor.rs
+0.00002508	1	centromusicalpaternense.es
+0.00002508	1	verificare.sella.corporateportal.aggiorniituoidati.com
+0.00002508	1	appleid.apple.com-sa.pm
+0.00002508	1	biced.iainbukittinggi.ac.id

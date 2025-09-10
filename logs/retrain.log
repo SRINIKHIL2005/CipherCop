@@ -1,0 +1,20 @@
+Extracting features for 10002 rows...
+Train shape: (8001, 16) Test shape: (2001, 16)
+Training XGBoost...
+Evaluation on holdout:
+ Accuracy: 0.5287356321839081
+ Precision: 0.6628571428571428
+ Recall: 0.116
+ Confusion matrix:
+ [[942  59]
+ [884 116]]
+Saving artifacts:
+ Wrote F:\College\Hackathons\CipherCop\Phishing_ML\Phishing-Website-Detection-by-Machine-Learning-Techniques\XGBoostClassifier_retrained.json
+ Wrote F:\College\Hackathons\CipherCop\Phishing_ML\Phishing-Website-Detection-by-Machine-Learning-Techniques\Phishing_XGB_Model_retrained.joblib
+Done
+
+--- STDERR ---
+C:\Users\hp\AppData\Roaming\Python\Python313\site-packages\xgboost\training.py:183: UserWarning: [14:16:35] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\learner.cc:738: 
+Parameters: { "use_label_encoder" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)

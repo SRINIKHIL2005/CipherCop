@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 350px;
+      padding: 0;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .header {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    .content {
+      padding: 20px;
+      background: white;
+    }
+    
+    .status-card {
+      background: rgba(40, 167, 69, 0.1);
+      border: 1px solid #28a745;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .status-card.warning {
+      background: rgba(255, 193, 7, 0.1);
+      border-color: #ffc107;
+    }
+    
+    .status-card.danger {
+      background: rgba(220, 53, 69, 0.1);
+      border-color: #dc3545;
+    }
+    
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .btn-primary {
+      background: #007bff;
+      color: white;
+    }
+    
+    .btn-success {
+      background: #28a745;
+      color: white;
+    }
+    
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+    
+    .settings-section {
+      border-top: 1px solid #e9ecef;
+      padding-top: 15px;
+      margin-top: 15px;
+    }
+    
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .toggle {
+      position: relative;
+      width: 50px;
+      height: 25px;
+    }
+    
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 25px;
+      transition: 0.3s;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 19px;
+      width: 19px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+    
+    input:checked + .slider {
+      background-color: #007bff;
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(25px);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🛡️ CipherCop</h1>
+    <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.9;">AI Security Extension</p>
+  </div>
+  
+  <div class="content">
+    <div id="status-card" class="status-card">
+      <div id="status-text">
+        <strong>🔍 Scanning Current Site...</strong>
+        <p style="margin: 5px 0 0 0; font-size: 12px;">Real-time protection active</p>
+      </div>
+    </div>
+    
+    <div id="site-info" style="display: none;">
+      <h3 style="margin-bottom: 10px; font-size: 14px;">Current Site Analysis</h3>
+      <div id="analysis-details"></div>
+    </div>
+
+    <!-- Dashboard summary (populated from backend when signed-in) -->
+    <div id="popup-dashboard" class="settings-section" style="display:none;">
+      <h3 style="margin-bottom: 10px; font-size: 14px;">Dashboard Summary</h3>
+      <div style="font-size:13px;">
+        <div><strong>Pages scanned:</strong> <span id="pc-pagesScanned">—</span></div>
+        <div><strong>Threats detected:</strong> <span id="pc-threatsDetected">—</span></div>
+        <div><strong>Threats blocked:</strong> <span id="pc-threatsBlocked">—</span></div>
+        <div><strong>Trusted sites:</strong> <span id="pc-trustedCount">—</span></div>
+        <div><strong>Untrusted reports:</strong> <span id="pc-untrustedCount">—</span></div>
+      </div>
+
+      <h4 style="margin-top:10px; font-size:13px;">Recent Visits</h4>
+      <div id="pc-recentList" style="max-height:120px; overflow:auto; font-size:12px; background:#f8f9fa; padding:8px; border-radius:6px;">
+        <div style="color:#666;">No data</div>
+      </div>
+    </div>
+    
+    <div class="settings-section">
+      <h3 style="margin-bottom: 15px; font-size: 14px;">Quick Actions</h3>
+      
+      <button id="whitelist-btn" class="btn btn-success">
+        ✅ Trust This Site
+      </button>
+      
+      <button id="report-btn" class="btn btn-danger">
+        🚨 Report as Malicious
+      </button>
+      
+      <button id="dashboard-btn" class="btn btn-primary">
+        📊 Open Dashboard
+      </button>
+    </div>
+    
+    <div class="settings-section">
+      <h3 style="margin-bottom: 15px; font-size: 14px;">Settings</h3>
+      
+      <div class="setting-item">
+        <span>Real-time Protection</span>
+        <label class="toggle">
+          <input type="checkbox" id="protection-toggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      
+      <div class="setting-item">
+        <span>Block Adult Content</span>
+        <label class="toggle">
+          <input type="checkbox" id="adult-filter-toggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+      
+      <div style="margin-top: 15px;">
+        <label style="font-size: 12px; display: block; margin-bottom: 5px;">Your Age:</label>
+        <select id="age-select" style="width: 100%; padding: 5px; border: 1px solid #ddd; border-radius: 4px;">
+          <option value="13">Under 13</option>
+          <option value="16">13-17</option>
+          <option value="18" selected>18+</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

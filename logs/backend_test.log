@@ -1,0 +1,268 @@
+[
+  {
+    "url": "http://example.com",
+    "status_code": 200,
+    "json": {
+      "heuristic_classification": {
+        "classification": "LEGITIMATE",
+        "confidence": "LOW",
+        "risk_factors": [
+          "Non-HTTPS connection"
+        ],
+        "risk_score": 10,
+        "threat_level": "LOW"
+      },
+      "html": {
+        "form_count": 0,
+        "iframe_count": 0,
+        "script_count": 0,
+        "suspicious_forms": 0
+      },
+      "ml_model": {
+        "features": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "prediction": 0,
+        "proba": [
+          0.511671245098114,
+          0.488328754901886
+        ]
+      },
+      "safe_browsing": {
+        "error": "API Error 404",
+        "threat_found": false,
+        "threat_type": null
+      },
+      "timestamp": "2025-09-09T14:20:31.062094",
+      "verdict": "LEGITIMATE",
+      "whois": {
+        "creation_date": "None",
+        "domain_age": null,
+        "expiration_date": "None",
+        "registrar": null,
+        "updated_date": "None"
+      }
+    }
+  },
+  {
+    "url": "http://login.example.com/signin",
+    "status_code": 200,
+    "json": {
+      "heuristic_classification": {
+        "classification": "LEGITIMATE",
+        "confidence": "LOW",
+        "risk_factors": [
+          "Non-HTTPS connection"
+        ],
+        "risk_score": 10,
+        "threat_level": "LOW"
+      },
+      "html": {
+        "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+      },
+      "ml_model": {
+        "features": [
+          31,
+          17,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prediction": null,
+        "proba": null
+      },
+      "safe_browsing": {
+        "error": "API Error 404",
+        "threat_found": false,
+        "threat_type": null
+      },
+      "timestamp": "2025-09-09T14:20:32.722965",
+      "verdict": "LEGITIMATE",
+      "whois": {
+        "creation_date": "None",
+        "domain_age": null,
+        "expiration_date": "None",
+        "registrar": null,
+        "updated_date": "None"
+      }
+    }
+  },
+  {
+    "url": "http://appleid.apple.com-sa.pm",
+    "status_code": 200,
+    "json": {
+      "heuristic_classification": {
+        "classification": "SUSPICIOUS",
+        "confidence": "MEDIUM",
+        "risk_factors": [
+          "Non-HTTPS connection",
+          "Multiple subdomains detected",
+          "Potential brand impersonation: apple"
+        ],
+        "risk_score": 45,
+        "threat_level": "MEDIUM"
+      },
+      "html": {
+        "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+      },
+      "ml_model": {
+        "features": [
+          30,
+          23,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prediction": null,
+        "proba": null
+      },
+      "safe_browsing": {
+        "error": "API Error 404",
+        "threat_found": false,
+        "threat_type": null
+      },
+      "timestamp": "2025-09-09T14:20:34.065988",
+      "verdict": "SUSPICIOUS",
+      "whois": {
+        "creation_date": "None",
+        "domain_age": null,
+        "expiration_date": "None",
+        "registrar": null,
+        "updated_date": "None"
+      }
+    }
+  },
+  {
+    "url": "http://malicious.test/phish",
+    "status_code": 200,
+    "json": {
+      "heuristic_classification": {
+        "classification": "LEGITIMATE",
+        "confidence": "LOW",
+        "risk_factors": [
+          "Non-HTTPS connection"
+        ],
+        "risk_score": 10,
+        "threat_level": "LOW"
+      },
+      "html": {
+        "error": "<urlopen error [Errno 11001] getaddrinfo failed>"
+      },
+      "ml_model": {
+        "features": [
+          27,
+          14,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "prediction": null,
+        "proba": null
+      },
+      "safe_browsing": {
+        "error": "API Error 404",
+        "threat_found": false,
+        "threat_type": null
+      },
+      "timestamp": "2025-09-09T14:20:35.662011",
+      "verdict": "LEGITIMATE",
+      "whois": {
+        "creation_date": "None",
+        "domain_age": null,
+        "expiration_date": "None",
+        "registrar": null,
+        "updated_date": "None"
+      }
+    }
+  }
+]

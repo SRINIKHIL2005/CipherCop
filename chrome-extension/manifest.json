@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "CipherCop Security Extension",
+  "version": "1.0.0",
+  "description": "AI-powered real-time website security monitoring",
+  
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "webNavigation",
+    "declarativeNetRequest"
+  ],
+  
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "CipherCop Security"
+  },
+  
+
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["warning.html", "warning.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline';"
+  }
+}

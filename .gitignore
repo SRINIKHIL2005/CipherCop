@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
+=======
+# Top-level .gitignore for the CipherCop repository
+
+# Python
+>>>>>>> 481bf46 (feat: popup -> log visits; DB migrations; sign-out fix; gitignore updates)
 __pycache__/
 *.py[cod]
 *$py.class
 
+<<<<<<< HEAD
 # C extensions
 *.so
 
@@ -96,10 +103,14 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+=======
+# Virtual envs
+>>>>>>> 481bf46 (feat: popup -> log visits; DB migrations; sign-out fix; gitignore updates)
 .env
 .venv
 env/
 venv/
+<<<<<<< HEAD
 ENV/
 env.bak/
 venv.bak/
@@ -176,3 +187,31 @@ logs/
 # Temporary files
 *.tmp
 *.temp
+=======
+
+# Logs and runtime artifacts
+logs/
+*.log
+ciphercop.db
+*.db
+*.sqlite3
+
+# Models and ML artifacts
+Models/
+Phishing_ML/
+Models/**/Fraud/
+*.joblib
+*.pkl
+*.onnx
+
+# Node
+node_modules/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+>>>>>>> 481bf46 (feat: popup -> log visits; DB migrations; sign-out fix; gitignore updates)

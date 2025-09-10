@@ -1,0 +1,26 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run phishing tuner",
+			"type": "shell",
+			"command": "cd /d f:\\College\\Hackathons\\CipherCop && C:\\Python313\\python.exe phishing_tune_current_extractor.py",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Import backend app check",
+			"type": "shell",
+			"command": "cd /d f:\\College\\Hackathons\\CipherCop\\cipher cop\\backend && C:\\Python313\\python.exe -c \"import importlib; importlib.import_module('app'); print('import ok')\"",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run phishing balanced tuner",
+			"type": "shell",
+			"command": "cd /d f:\\College\\Hackathons\\CipherCop && C:\\Python313\\python.exe phishing_tune_balance.py",
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

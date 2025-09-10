@@ -1,0 +1,17 @@
+C:\Users\hp\AppData\Roaming\Python\Python313\site-packages\xgboost\training.py:183: UserWarning: [14:29:46] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\learner.cc:738: 
+Parameters: { "use_label_encoder" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+Loaded sample: 2000
+Feature matrix shape: (2000, 16)
+Train shape: (1600, 16) Test shape: (400, 16)
+Training XGBoost on original features (may take a while)...
+Evaluation on holdout:
+ Accuracy: 0.5225
+ Precision: 0.6097560975609756
+ Recall: 0.125
+ Confusion matrix:
+ [[184  16]
+ [175  25]]
+Saved JSON model to F:\College\Hackathons\CipherCop\Phishing_ML\Phishing-Website-Detection-by-Machine-Learning-Techniques\XGBoostClassifier_original_features.json
+Saved joblib model to F:\College\Hackathons\CipherCop\Phishing_ML\Phishing-Website-Detection-by-Machine-Learning-Techniques\Phishing_XGB_Model_original_features.joblib

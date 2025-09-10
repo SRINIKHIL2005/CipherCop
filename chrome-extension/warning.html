@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>🛡️ CipherCop Security Warning</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .warning-container {
+      background: white;
+      border-radius: 15px;
+      max-width: 600px;
+      margin: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    
+    .warning-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+    
+    .content {
+      padding: 40px;
+    }
+    
+    .url-info {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      word-break: break-all;
+    }
+    
+    .buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .btn {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
+    
+    .btn-danger:hover {
+      background: #c82333;
+    }
+    
+    .btn-success {
+      background: #28a745;
+      color: white;
+    }
+    
+    .btn-success:hover {
+      background: #218838;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background: #f8f9fa;
+      font-size: 14px;
+      color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+  <div class="warning-container">
+    <div class="header">
+      <div class="warning-icon">⚠️</div>
+      <h1>Security Warning</h1>
+      <p>CipherCop has blocked access to this website</p>
+    </div>
+    
+    <div class="content">
+      <div id="warning-message">
+        <h2>This website has been flagged as potentially dangerous</h2>
+        <p>Our AI security system has detected suspicious activity that could harm your device or steal your personal information.</p>
+      </div>
+      
+      <div class="url-info">
+        <strong>Blocked URL:</strong>
+        <div id="blocked-url" style="margin-top: 10px; font-family: monospace;"></div>
+      </div>
+      
+      <div id="reason-details">
+        <h3>Why was this blocked?</h3>
+        <ul id="risk-factors"></ul>
+      </div>
+      
+      <div class="buttons">
+        <button id="go-back-btn" class="btn btn-success">
+          🔙 Go Back to Safety
+        </button>
+        <button id="proceed-btn" class="btn btn-danger">
+          ⚠️ I Understand the Risk
+        </button>
+      </div>
+      
+      <div style="margin-top: 30px; padding: 20px; background: #e7f3ff; border-radius: 8px;">
+        <h4>🛡️ Stay Safe Online</h4>
+        <ul style="margin-top: 10px; padding-left: 20px;">
+          <li>Never enter passwords or personal information on suspicious sites</li>
+          <li>Look for HTTPS and valid certificates</li>
+          <li>Be cautious of unexpected redirects</li>
+          <li>Keep CipherCop enabled for continuous protection</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer">
+      Protected by CipherCop AI Security Extension<br>
+      <small>Real-time threat detection and prevention</small>
+    </div>
+  </div>
+  
+  <script src="warning.js"></script>
+</body>
+</html>

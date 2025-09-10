@@ -1,0 +1,6 @@
+MODEL PATH: f:\College\Hackathons\CipherCop\Phishing_ML\Phishing-Website-Detection-by-Machine-Learning-Techniques\Phishing_XGB_Model_tuned_balanced.joblib
+Loaded type: <class 'xgboost.sklearn.XGBClassifier'>
+Has predict: True
+Has predict_proba: True
+n_features_in_: 16
+predict_proba sample: [[0.2107423 0.7892577]]

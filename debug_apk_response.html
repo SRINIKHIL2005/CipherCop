@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug APK Response</title>
+</head>
+<body>
+    <h1>Debug APK Response</h1>
+    <input type="file" id="fileInput" accept=".apk">
+    <button onclick="debugAPK()">Test APK Upload</button>
+    <pre id="output"></pre>
+
+    <script>
+        async function debugAPK() {
+            const fileInput = document.getElementById('fileInput');
+            const output = document.getElementById('output');
+            
+            if (!fileInput.files || fileInput.files.length === 0) {
+                alert('Please select an APK file');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            try {
+                const response = await fetch('http://localhost:5000/analyze/apk-file', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                output.textContent = JSON.stringify(data, null, 2);
+                
+                console.log('APK Response:', data);
+                
+                // Check what our frontend logic would do
+                const verdict = data.verdict || data.final_verdict || 'UNKNOWN';
+                const score = (data.analysis_summary && typeof data.analysis_summary.combined_risk_score !== 'undefined')
+                    ? data.analysis_summary.combined_risk_score
+                    : (data.combined_score ?? 'N/A');
+                const ml = data.ml_model || data.ml_analysis || null;
+                
+                console.log('Frontend would use:');
+                console.log('- verdict:', verdict);
+                console.log('- score:', score);
+                console.log('- ml:', ml);
+                console.log('- has file_info:', !!data.file_info);
+                
+            } catch (error) {
+                output.textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

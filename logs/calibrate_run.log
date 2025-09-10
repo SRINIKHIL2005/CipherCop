@@ -1,0 +1,14 @@
+Loading data...
+Using local fallback feature extractor
+Extracting features for 10002 rows...
+Loading joblib model: f:\College\Hackathons\CipherCop\Phishing_ML\Phishing-Website-Detection-by-Machine-Learning-Techniques\Phishing_XGB_Model_tuned_balanced.joblib
+Fitting calibrated classifier...
+ERROR during calibration: CalibratedClassifierCV.__init__() got an unexpected keyword argument 'base_estimator'
+Traceback (most recent call last):
+  File "f:\College\Hackathons\CipherCop\phishing_calibrate.py", line 102, in <module>
+    calibrator = CalibratedClassifierCV(base_estimator=model, method='sigmoid', cv='prefit')
+TypeError: CalibratedClassifierCV.__init__() got an unexpected keyword argument 'base_estimator'
+Traceback (most recent call last):
+  File "f:\College\Hackathons\CipherCop\phishing_calibrate.py", line 102, in <module>
+    calibrator = CalibratedClassifierCV(base_estimator=model, method='sigmoid', cv='prefit')
+TypeError: CalibratedClassifierCV.__init__() got an unexpected keyword argument 'base_estimator'
