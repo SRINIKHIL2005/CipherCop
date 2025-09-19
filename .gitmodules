@@ -5,3 +5,7 @@
 [submodule "Phishing_ML/Phishing-Website-Detection-by-Machine-Learning-Techniques"]
 	path = Phishing_ML/Phishing-Website-Detection-by-Machine-Learning-Techniques
 	url = https://github.com/shreyagopal/Phishing-Website-Detection-by-Machine-Learning-Techniques.git
+
+[submodule "cipher cop"]
+	path = cipher cop
+	url = https://github.com/SRINIKHIL2005/CipherCop.git
