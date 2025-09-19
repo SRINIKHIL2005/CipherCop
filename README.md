@@ -1,148 +1,172 @@
-# 🛡️ CyberGuard AI - Advanced Fraud Detection System
+# CipherCop
 
-An advanced AI/ML-powered web application that detects and categorizes fraudulent online content using Google Cloud's Gemini API with a stunning glassmorphism interface.
+A practical phishing and malware detection system composed of:
 
-## ✨ Features
+- A Flask backend that scores websites using heuristics, Google Safe Browsing, optional LLM assistance, and ML models (XGBoost).
+- A Chrome extension that performs real‑time URL checks and warns or blocks based on backend results.
+- A lightweight frontend for local validation and dashboard views.
+- Reproducible ML training/tuning scripts and model artifacts.
 
-- **🌐 Website Threat Analysis**: Detects fraudulent/phishing websites by analyzing URLs
-- **📱 Mobile App Security Scan**: Identifies fake or malicious mobile applications  
-- **🤖 AI-Powered Detection**: Uses Google Gemini AI for intelligent fraud analysis
-- **💎 Glassmorphism UI**: Modern, beautiful interface with video background
-- **⚡ Real-time Results**: Instant analysis with detailed explanations
-- **🎥 Dynamic Background**: Video background with transparency effects
-- **✨ Animated UI**: Floating particles and smooth animations
+This README documents how to run, configure, and develop the system without fluff.
 
-## 🚀 Setup Instructions
+## Table of contents
 
-### Backend Setup
-1. Navigate to the `backend` folder
-2. Install dependencies: `pip install -r requirements.txt`
-3. Start the server: `python app.py` or run `start_backend.bat`
-4. Backend will be available at `http://localhost:5000`
+- Overview
+- System architecture
+- Prerequisites
+- Setup and local run
+  - Backend (Flask)
+  - Frontend (static/Vite)
+  - Chrome extension
+- Configuration (env vars)
+- API overview
+- Models and training
+- Repository structure
+- Troubleshooting
+- Security notes and licensing
 
-### Frontend Setup
-1. Navigate to the `frontend` folder
-2. Open `index.html` in your web browser
-3. Or serve it using a simple HTTP server
+## Overview
 
-## 🔧 Google Cloud API Setup (Optional)
+The backend exposes REST endpoints to classify websites and APKs. The Chrome extension calls the backend on navigation and injects warnings with configurable intensity. The system prefers local, deterministic URL feature extraction (offline‑first) to reduce false positives and flaky network dependencies; Safe Browsing and optional LLM checks are layered on top.
 
-### Current Status
-- ✅ **Demo Mode**: System works with simulated AI responses
-- ⚠️ **Full AI Mode**: Requires Google Cloud API activation
+## System architecture
 
-### To Enable Full AI Analysis:
+- Backend (Flask): threat scoring pipeline
+  - URL heuristics (domain, path, TLD, length, patterns)
+  - Optional URL HTML/WAI features when accessible
+  - Safe Browsing lookups (if API key configured)
+  - ML phishing classifier (XGBoost JSON/joblib)
+  - Optional Gemini (LLM) summary signal
+  - SQLite persistence for users, sessions, scans, and extension analytics
+- Chrome extension: background monitor + content overlay + popup UI
+  - Calls `/analyze/website`, logs visits to `/extension/log-visit`
+  - Warn/Block thresholds based on combined risk
+- Frontend: static HTML/Vite pages for local testing/dashboard
+- ML: scripts for training, tuning, and exporting XGBoost models
 
-1. **Enable the Generative Language API**:
-   - Visit: https://console.developers.google.com/apis/api/generativelanguage.googleapis.com/overview?project=1034250232006
-   - Click "Enable" button
-   - Wait a few minutes for activation
+## Prerequisites
 
-2. **Alternative**: Create a new Google Cloud project:
-   - Go to https://console.cloud.google.com/
-   - Create a new project
-   - Enable the Generative Language API
-   - Get a new API key
-   - Replace the API key in `backend/app.py`
+- Windows, macOS, or Linux
+- Python 3.10+ (3.13 supported)
+- Node.js 18+ (only if using the Vite dev server)
+- Google Chrome (for the extension)
 
-### API Error Resolution
-If you see "API Error: 403 - SERVICE_DISABLED":
-- The system automatically falls back to demo mode
-- You'll still get detailed fraud analysis (simulated)
-- Follow the steps above to enable full AI mode
+Optional external services:
+- Google Safe Browsing API key
+- Google Generative AI (Gemini) API key (backend works without it)
 
-## 🎨 UI Features
+## Setup and local run
 
-### Glassmorphism Design
-- Translucent glass-like cards with blur effects
-- Gradient backgrounds and smooth animations
-- Video background with opacity controls
-- Floating particle animations
+### Backend (Flask)
 
-### Advanced Effects
-- **Backdrop Blur**: Modern glass morphism effect
-- **Gradient Text**: Colorful animated text effects  
-- **Hover Animations**: Interactive card transformations
-- **Loading Spinners**: Elegant loading indicators
-- **Responsive Design**: Works on all screen sizes
+From the repository root in a Windows cmd shell:
 
-## 🔍 Usage
+- cd "cipher cop\backend"
+- python -m venv .venv
+- .venv\Scripts\activate
+- pip install -r requirements.txt
+- set FLASK_ENV=development
+- python app.py
 
-1. **Start the Backend**: Run the Flask server first
-2. **Open Frontend**: Open `index.html` in your browser
-3. **Analyze Content**:
-   - **Website Analysis**: Enter a suspicious URL
-   - **App Analysis**: Enter mobile app details
-4. **View Results**: Get AI-powered analysis with risk assessment
+The API will run at http://localhost:5000
 
-## 📡 API Endpoints
+Notes
+- The backend creates/uses `ciphercop.db` in the working directory and applies lightweight migrations at startup if it detects older schemas.
+- Permissive CORS is enabled for local development.
 
-- `GET /` - Health check endpoint
-- `POST /analyze/website` - Analyze website for fraud
-- `POST /analyze/app` - Analyze mobile app for fraud
+### Frontend (static/Vite)
 
-## 🛠️ Technology Stack
+Option A — static serve (no build):
+- cd "cipher cop\frontend"
+- npm run serve:static
+- Open http://localhost:3001
 
-- **Backend**: Python, Flask, Google Gemini AI, Flask-CORS
-- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
-- **UI Framework**: Custom Glassmorphism CSS
-- **AI/ML**: Google Cloud Generative Language API
-- **Video**: HTML5 Video Background
+Option B — Vite dev server:
+- cd "cipher cop\frontend"
+- npm install
+- npm run dev
+- Open the dev URL (commonly http://localhost:5173)
 
-## 🎥 Video Background
+### Chrome extension
 
-The application features a dynamic video background:
-- **File**: `frontend/background-video.mp4`
-- **Effect**: 30% opacity with overlay gradients
-- **Loop**: Continuous playback
-- **Responsive**: Scales to all screen sizes
+- Start the backend first (http://localhost:5000)
+- In Chrome: open chrome://extensions
+- Toggle on “Developer mode”
+- Click “Load unpacked” and select the `chrome-extension` directory
+- Navigate to a few benign/malicious test URLs to see the overlay behavior
 
-## 🔒 Security Notes
+## Configuration (env vars)
 
-- API key is embedded for demo purposes
-- In production, use environment variables
-- Implement proper API key management
-- Use HTTPS in production deployment
+All are optional unless stated.
 
-## 🚨 Demo Mode Features
+- GOOGLE_SAFE_BROWSING_API_KEY: Enables Safe Browsing checks.
+- GOOGLE_API_KEY: Enables Gemini‑based analysis; without it, the backend uses heuristics/ML only.
+- FRONTEND_URL: If set, GET / redirects to this URL; otherwise the backend probes common dev ports.
+- ML_THRESHOLD: Float (0..1), default 0.79; influences how model scores are interpreted.
+- EXTRACTION_MODE: OFFLINE_FIRST (default) | REMOTE_FIRST | OFFLINE_ONLY; controls URL feature extraction routing.
+- ALLOW_REMOTE_EXTRACTION: 1 (default) allows remote extractor when DNS resolves; set 0 for fully local extraction.
 
-When the Google API is not enabled, the system provides:
-- Realistic fraud analysis simulations
-- Risk level assessments (Low/Medium/High)
-- Detailed explanation of analysis process
-- Educational content about fraud detection
-- All UI features remain fully functional
+Create a `.env` file in `cipher cop/backend/` to store local secrets; do not commit real keys.
 
-## 🎯 Key Improvements
+## API overview
 
-### Backend Enhancements
-- ✅ Graceful API error handling
-- ✅ Fallback analysis system
-- ✅ Enhanced logging and debugging
-- ✅ CORS support for all origins
+Selected endpoints (see `cipher cop/backend/app.py` for details):
 
-### Frontend Upgrades
-- ✅ Stunning glassmorphism design
-- ✅ Video background integration
-- ✅ Floating particle animations
-- ✅ Advanced CSS effects and transitions
-- ✅ Responsive mobile design
-- ✅ Professional loading indicators
+- POST `/analyze/website` { url: string }
+  - Returns verdict, combined risk score, component signals (ML, Safe Browsing, heuristic) and metadata.
+- POST `/analyze/adult-content` { url: string, userAge: number }
+  - Returns detection flag and recommendation (used by the extension).
+- POST `/analyze/app`
+  - Accepts APK upload or text metadata; returns malware classification when model is available.
+- GET `/health`
+  - Returns server and model load status; used for smoke checks.
 
-## 📱 Responsive Design
+## Models and training
 
-The interface automatically adapts to:
-- **Desktop**: Full-width grid layout
-- **Tablet**: Responsive card arrangement  
-- **Mobile**: Single-column stacked layout
-- **Small screens**: Optimized font sizes and spacing
+Preferred phishing model format: XGBoost Booster JSON for stability across xgboost versions; joblib models are supported as fallbacks.
 
-## 🎨 Color Scheme
+Artifacts are read from:
+`Phishing_ML/Phishing-Website-Detection-by-Machine-Learning-Techniques/`
 
-- **Primary**: Deep purple gradients (#667eea to #764ba2)
-- **Background**: Dark blue theme (#0f0f23)
-- **Glass**: Translucent white overlays (10-15% opacity)
-- **Accents**: Green for success, red for errors
-- **Text**: White with various opacity levels
+Common workflows (run from repository root):
 
-Your AI-powered fraudulent content detection system is now ready with a professional, modern interface! 🚀
+- Retrain with current extractor and export JSON/joblib:
+  - python phishing_retrain_current_extractor.py
+- Tuning runs (current extractor / class balance):
+  - python phishing_tune_current_extractor.py
+  - python phishing_tune_balance.py
+
+Data files are expected under `Phishing_ML/.../DataFiles/` (e.g., `3.legitimate.csv`, `4.phishing.csv`).
+
+APK malware model: optional XGBoost model under `Models/APK/Models/APKMalwareDetection/app/model/` (JSON preferred over pickle).
+
+## Repository structure
+
+High‑level map (selected):
+
+- `cipher cop/backend/`
+  - `app.py` — REST API service and threat pipeline
+  - `database.py` — SQLite schema, analytics, and logging
+  - `heuristics/` — allow/deny lists and scoring helpers
+  - `requirements.txt`
+- `cipher cop/frontend/` — static pages and optional Vite config
+- `chrome-extension/` — background/content/popup and manifest
+- `Phishing_ML/Phishing-Website-Detection-by-Machine-Learning-Techniques/` — feature extractor, data, models
+- `logs/` — runtime logs
+- Root training/tuning scripts — e.g., `phishing_retrain_current_extractor.py`, `phishing_tune_balance.py`
+
+There is also an older `backend/` folder in the root; the active backend used by tasks and the extension is `cipher cop/backend/`.
+
+## Troubleshooting
+
+- Safe Browsing not active: ensure `GOOGLE_SAFE_BROWSING_API_KEY` is set; otherwise the result will omit that signal.
+- Internal URLs: the backend intentionally skips localhost/192.168.* to avoid self‑analysis loops.
+- Model loading errors: prefer Booster JSON artifacts; confirm paths in `app.py` align with your model locations.
+- Vite plugin errors: install dependencies inside `cipher cop/frontend/` or use the static serve option.
+- SQLite schema mismatches: run the backend once to apply the small migrations; they add missing columns for older DB files.
+
+## Security notes and licensing
+
+- Do not commit real API keys. Use `.env` locally; use secret managers in production.
+- Review and maintain allowlist/blacklist files in `cipher cop/backend/heuristics/` to fit your environment.
+- No explicit license file is present at the root as of this revision. Add a LICENSE before distributing.
