@@ -1,0 +1,7 @@
+[submodule "Models/APK/Models/APKMalwareDetection"]
+	path = Models/APK/Models/APKMalwareDetection
+	url = https://github.com/tderick/android-malware-detection.git
+
+[submodule "Phishing_ML/Phishing-Website-Detection-by-Machine-Learning-Techniques"]
+	path = Phishing_ML/Phishing-Website-Detection-by-Machine-Learning-Techniques
+	url = https://github.com/shreyagopal/Phishing-Website-Detection-by-Machine-Learning-Techniques.git
