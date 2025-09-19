@@ -1,0 +1,27 @@
+{
+  "name": "ciphercop-admin-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve:static": "npx serve . -p 3001"
+  },
+  "devDependencies": {
+    "vite": "^5.4.20"
+  },
+  "description": "CipherCop Security Admin Dashboard - Website & APK Analysis",
+  "keywords": [
+    "security",
+    "malware",
+    "phishing",
+    "apk",
+    "admin"
+  ]
+}
